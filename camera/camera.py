@@ -19,6 +19,7 @@ def shoot(index):
 def flat_img(index):
     tmp_img = Image.open('/pics/pic%s.jpg' % index).convert('RGBA')
     arr = np.array(tmp_img)
+    print(arr.shape)
     return arr.ravel()
 
 
