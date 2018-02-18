@@ -6,26 +6,20 @@ from time import sleep
 import numpy as np
 from PIL import Image
 
+
 def shoot(index):
     camera = PiCamera()
     camera.start_preview()
     sleep(5)
     camera.capture('/pics/pic%s.jpg' % index)
     camera.stop_preview()
+    return flat_img(index)
 
-'''
-img = Image.open('orig.png').convert('RGBA')
-arr = np.array(img)
 
-# record the original shape
-shape = arr.shape
-
-# make a 1-dimensional view of arr
-flat_arr = arr.ravel()
-
-# convert it to a matrix
-vector = np.matrix(flat_arr)
-'''
+def flat_img(index):
+    tmp_img = Image.open('/pics/pic%s.jpg' % index).convert('RGBA')
+    arr = np.array(tmp_img)
+    return arr.ravel()
 
 
 shoot(1)
