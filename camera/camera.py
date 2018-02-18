@@ -13,14 +13,14 @@ def shoot(index):
     sleep(5)
     camera.capture('/pics/pic%s.jpg' % index)
     camera.stop_preview()
-    return flat_img(index)
+    return flatten_img(index)
 
 
-def flat_img(index):
+def flatten_img(index):
     tmp_img = Image.open('/pics/pic%s.jpg' % index).convert('RGBA')
     arr = np.array(tmp_img)
     print(arr.shape)
     return arr.ravel()
 
 
-shoot(1)
+#shoot(1)
